@@ -2,6 +2,7 @@
 
 import { redirect } from "next/navigation";
 import { createCarSchema } from "../schemas/create-car";
+import { fitImage } from "../utils/fit-image";
 
 export const createCar = async (formData: FormData) => {
   const data = createCarSchema.safeParse({
@@ -14,17 +15,11 @@ export const createCar = async (formData: FormData) => {
     price_to: formData.get("price_to") ?? "",
     img: formData.get("img") as File,
   });
-  /*
-  const parsed = createCarSchema.safeParse(data);
-
-  if (!parsed.success) {
-    console.log(parsed.error.flatten().fieldErrors);
-    return;
-  }
-*/
 
   if (data.success) {
-    console.log(data.data);
+      const imgName = await fitImage(data.data.img);
+
+      console.log(imgName);
   } else {
     console.log(data.error.flatten().fieldErrors);
   }
