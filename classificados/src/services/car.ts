@@ -26,3 +26,16 @@ export const addCar = async (data: Props) => {
     })
     return newCar;
 }
+
+export const getAllCars = async () => {
+    const cars = await prisma.car.findMany({
+        select: {
+            id: true,
+            title: true,
+            img: true,
+            priceFrom: true,
+            priceTo: true    
+        }
+    });    
+    return cars;
+}
