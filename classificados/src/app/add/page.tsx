@@ -1,5 +1,5 @@
-import { AddForm } from "@/src/components/add-form";
-import { Header } from "@/src/components/header";
+import { AddForm } from "@/components/add-form";
+import { Header } from "@/components/header";
 
 export default function Page() {
     return (

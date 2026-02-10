@@ -3,6 +3,7 @@
 import { redirect } from "next/navigation";
 import { createCarSchema } from "../schemas/create-car";
 import { fitImage } from "../utils/fit-image";
+import { addCar } from "../services/car";
 
 export const createCar = async (formData: FormData) => {
   const data = createCarSchema.safeParse({
@@ -18,11 +19,20 @@ export const createCar = async (formData: FormData) => {
 
   if (data.success) {
       const imgName = await fitImage(data.data.img);
+      const newCar = await addCar({
+        title: data.data.title,
+        description: data.data.description,
+        author_name: data.data.author_name,
+        author_email: data.data.author_email,
+        negotiable: data.data.negotiable,        
+        price_from: data.data.price_from,
+        price_to: data.data.price_to,
+        imgName
+      })
 
-      console.log(imgName);
+      // console.log(newCar.id);
   } else {
     console.log(data.error.flatten().fieldErrors);
   }
-
   redirect("/");
 };
