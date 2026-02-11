@@ -39,3 +39,12 @@ export const getAllCars = async () => {
     });    
     return cars;
 }
+
+//Consultar cadastro do carro no banco de dados link
+//http://localhost:3000/car/1
+export const getCarById = async (id: number) => {
+  const car = await prisma.car.findUnique({
+    where: { id },
+  });
+  return car;
+};

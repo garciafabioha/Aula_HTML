@@ -9,7 +9,7 @@ export default async function Page() {
     <div>
       <Header />  
 
-      <section className="grid sm:grid-cols-2 md:grid-cols-4 gap-4">
+      <section className="mx-3 grid gap-4 sm:grid-cols-2 md:grid-cols-4">
         {cars.map(carItem => (
           <CarItem key={carItem.id} data={carItem}/> 
         ))}                                       
