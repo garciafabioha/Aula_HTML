@@ -1,42 +1,85 @@
 import { StatusBar } from 'expo-status-bar';
 import { useState } from 'react';
-import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, TextInput, TouchableOpacity, Alert } from 'react-native';
+import axios from 'axios';
+
+const groq_api_key = process.env.EXPO_PUBLIC_GROQ_API_KEY;
 
 export default function App() {
+  const [ingredientes, setIngredientes] = useState('');
+  const [receita, setReceita] = useState('');
 
-  function gerarReceita() {
-    const [ingredientes, setIngredientes] = useState('') 
-  } 
+  const api = axios.create({
+    baseURL: 'https://api.groq.com/openai/v1',
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${groq_api_key}`
+    }
+  });
+
+  async function gerarReceita() {
+
+    if (!ingredientes.trim()) {
+      Alert.alert('Atenção', 'Digite alguns ingredientes antes 😉');
+      return;
+    }
+
+    try {
+      const resposta = await api.post('/chat/completions', {
+        model: 'llama-3.2-8b-instant',
+        temperature: 1,
+        max_tokens: 1024,
+        message: [
+          {
+            role: 'system',
+            content: `Você é um chef criativo. Crie receitas simples e deliciosas com os
+          ingredientes fornecidos. Responda em português do Brasil.`
+          },
+          {
+            role: 'user',
+            content: `Crie uma receita com esses ingredientes: ${ingredientes}`
+          }
+        ]
+      });
+
+      Alert.alert(resposta);
+
+      setReceita(resposta.data.choices[0].message.content);
+      console.log('✅ Resposta completa:', resposta.data);
+      console.log('📝 Texto da receita:', resposta.data.choices?.[0]?.message?.content);
+
+    } catch (error) {
+      console.error('❌ Erro ao chamar a API:', error?.response?.data || error.message);
+    }
+  }
 
   return (
     <View style={styles.container}>
       <StatusBar style="light" />
-      {/*Header*/}
+
       <View style={styles.header}>
         <Text style={styles.emoji}>🧑‍🍳</Text>
         <Text style={styles.title}>Chef IA Garcia</Text>
         <Text style={styles.subTitle}>Digite os ingredientes que você tem</Text>
       </View>
-      {/*Input*/}
-      <TextInput 
+
+      <TextInput
         style={styles.input}
         placeholder='Ex: frango, arroz, tomate, cebola...'
         multiline
         placeholderTextColor="#888"
-        value={}
-        onChangeText={}
+        value={ingredientes}
+        onChangeText={setIngredientes}
       />
-      {/*Botão*/}
-      <TouchableOpacity 
-        style={styles.button}
-        onPress={gerarReceita}
-      >
+
+      <TouchableOpacity style={styles.button} onPress={() => gerarReceita()}>
         <Text style={styles.buttonText}>Gerar Receita</Text>
       </TouchableOpacity>
-      {/*Receita*/}
+
       <View>
-        <Text>🥘</Text>
-        <Text>Sua Receita aparecerá aqui !</Text>
+        <Text style={{ color: '#fff', marginTop: 10 }}>
+          {receita || 'Sua Receita aparecerá aqui!'}
+        </Text>
       </View>
     </View>
   );
@@ -64,7 +107,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold'
   },
   subTitle: {
-    fontSize: 14,  
+    fontSize: 14,
     color: '#888',
     marginTop: 5
   },
@@ -79,16 +122,15 @@ const styles = StyleSheet.create({
     marginBottom: 15
   },
   button: {
-    backgroundColor: '#e17055', 
+    backgroundColor: '#e17055',
     paddingVertical: 16,
     borderRadius: 15,
-    alignItems: 'center', 
+    alignItems: 'center',
     marginBottom: 15,
-    textAlign: 'center',
   },
   buttonText: {
-    color: '#fff', 
-    fontSize: 16,   
+    color: '#fff',
+    fontSize: 16,
     fontWeight: 'bold'
   }
 });
