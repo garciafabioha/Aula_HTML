@@ -2,6 +2,10 @@
 
 # dependencies
 node_modules/
+.env
+.env.local
+.env.*
+chef-ia/.env
 
 # Expo
 .expo/
