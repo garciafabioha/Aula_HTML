@@ -34,12 +34,22 @@ body {
     color: #180f4a;
     display: flex;
     align-items: center;
+    font-size: 44px;
 }
 
 .logo-right-cont {
     display: flex;
     align-items: flex-start;
     gap: 10px;
+}
+
+.btn {
+    background: #ff2978;    
+    color: white;
+    border-radius: 5px;
+    display: inline-block;
+    border: none;
+    font-size: 18px;
 }
 
 .contact-btn {
@@ -82,9 +92,9 @@ section {
     text-align: center;
 }
 
-section h2 {
+h2 {
     width: 100%;
-    font-size: 50px;
+    font-size: 35px;
     margin: 0;
     font-family: "Lobster", cursive;
     font-weight: bold;
