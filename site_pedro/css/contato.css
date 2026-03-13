@@ -7,7 +7,10 @@
 
 body {
     margin: 0;
+    padding: 0;
     font-family: "Roboto", sans-serif;
+    /* background: rgb(235, 238, 245); */
+    background: rgb(220, 224, 232);
 }
 
 
@@ -44,7 +47,7 @@ body {
 }
 
 .btn {
-    background: #ff2978;    
+    background: #ff2978;
     color: white;
     border-radius: 5px;
     display: inline-block;
@@ -67,16 +70,21 @@ body {
 }
 
 .voltar {
-    position: absolute;      /* posiciona livremente na tela */
-    top: 10px;               /* distância do topo */
-    left: 50%;               /* centraliza horizontalmente */
-    transform: translateX(-50%); /* corrige a centralização */
+    position: absolute;
+    /* posiciona livremente na tela */
+    top: 10px;
+    /* distância do topo */
+    left: 50%;
+    /* centraliza horizontalmente */
+    transform: translateX(-50%);
+    /* corrige a centralização */
     text-align: center;
     color: #180f4a;
     text-decoration: none;
     font-weight: bold;
     font-size: 16px;
-    z-index: 1000;           /* garante que fique acima de outros elementos */
+    z-index: 1000;
+    /* garante que fique acima de outros elementos */
 }
 
 .voltar:hover {

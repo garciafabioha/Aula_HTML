@@ -2,14 +2,16 @@
 
 * {
     box-sizing: border-box;
-    margin: 0;
-    padding: 0;
 }
 
 body {
+    margin: 0;
+    padding: 0;
     background: #f8f8f8;
     padding: 20px;
     font-family: "Roboto", sans-serif;
+    /* background: rgb(235, 238, 245); */
+    background: rgb(220, 224, 232);
 }
 
 header {
@@ -32,16 +34,21 @@ header h1 {
 }
 
 .voltar {
-    position: absolute;      /* posiciona livremente na tela */
-    top: 10px;               /* distância do topo */
-    left: 50%;               /* centraliza horizontalmente */
-    transform: translateX(-50%); /* corrige a centralização */
+    position: absolute;
+    /* posiciona livremente na tela */
+    top: 10px;
+    /* distância do topo */
+    left: 50%;
+    /* centraliza horizontalmente */
+    transform: translateX(-50%);
+    /* corrige a centralização */
     text-align: center;
     color: #180f4a;
     text-decoration: none;
     font-weight: bold;
     font-size: 16px;
-    z-index: 1000;           /* garante que fique acima de outros elementos */
+    z-index: 1000;
+    /* garante que fique acima de outros elementos */
 }
 
 .voltar:hover {
@@ -75,13 +82,30 @@ header h1 {
 }
 
 .card {
-    background: white;
+    /* background: white; */
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.4));
+    color: white;
     border-radius: 10px;
     padding: 15px;
     text-align: center;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s, box-shadow 0.3s;
     cursor: pointer;
+    overflow: hidden;
+    position: relative;
+    animation: aparecer 0.6s ease;
+}
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .card img {
@@ -89,7 +113,7 @@ header h1 {
     height: auto;
     border-radius: 5px;
     margin-bottom: 10px;
-    transition: transform 0.3s;
+    transition: transform 0.5s ease;
 }
 
 .card h3 {
@@ -101,15 +125,48 @@ header h1 {
 .card p {
     font-size: 14px;
     color: gray;
+    font-weight: bold;
 }
 
 .card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
 }
 
 .card:hover img {
-    transform: scale(1.05);
+    transform: scale(1.15);
+}
+
+.card::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0%;
+    height: 3px;
+    background: #ff2978;
+    transition: width 0.4s;
+}
+
+.card:hover::after {
+    width: 100%;
+}
+
+.info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.4));
+    color: white;
+
+    transform: translateY(100%);
+    transition: 0.4s;
+}
+
+.card:hover .info {
+    transform: translateY(0);
 }
 
 .logo-rodape {
@@ -141,6 +198,23 @@ header h1 {
 
 .contact-btn:hover {
     background: #180f4a;
+}
+
+.btn-whats {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 18px;
+    background: #25D366;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.btn-whats:hover {
+    background: #1ebe5d;
+    transform: scale(1.05);
 }
 
 section {
