@@ -15,7 +15,9 @@ body {
 .navbar {
     display: flex;
     flex-flow: row wrap;
-    height: 100px;
+    padding: 10px 0;
+    height: auto;
+    /*height: 100px;*/
     background: white;
     justify-content: center;
     align-items: center;
@@ -81,7 +83,7 @@ body {
     border: none;
     background: #ff2978;
 }
-
+/*
 .logo-left {
     display: flex;
     align-items: flex-start;
@@ -94,11 +96,22 @@ body {
     align-items: flex-start;
     margin-left: auto;
 }
-
+*/
 .logo-right-cont {
     display: flex;
     align-items: flex-start;
     gap: 10px;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-container img {
+    width: 80px;
+    height: auto;
 }
 
 .header {
@@ -269,6 +282,7 @@ footer {
 .promo-box {
     /*Banner promoção Desativado*/
     /* display:none;  */
+    margin-top: 150px; /* ajuste conforme necessário */
     background: linear-gradient(90deg, #180f4a, #ff2978);
     color: white;
     text-align: center;
