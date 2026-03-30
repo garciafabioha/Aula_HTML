@@ -309,6 +309,23 @@ footer {
     text-decoration: none;
 }
 
+.carousel {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    overflow: hidden;
+}
+
+.carousel img {
+    width: 100%;
+    display: none;
+    border-radius: 10px;
+}
+
+.carousel img.active {
+    display: block;
+}
+
 /*Deixar a página responsiva*/
 @media screen and (max-width: 1005px) {
     .navbar {

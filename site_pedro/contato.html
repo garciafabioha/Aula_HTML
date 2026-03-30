@@ -1,71 +1,77 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-br">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Um site de e-commerce">
-    <meta name="keywords" content="Loja Street Culture">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Um site de e-commerce" />
+    <meta name="keywords" content="Loja Street Culture" />
     <title>Contato</title>
-    <link rel="stylesheet" href="./css/contato.css">
-</head>
+    <link rel="stylesheet" href="./css/contato.css" />
+  </head>
 
-<body>
-
+  <body>
     <nav class="navbar">
+      <a href="../index.html" class="voltar">⬅ Voltar para página inicial</a>
 
-        <a href="../index.html" class="voltar">⬅ Voltar para página inicial</a>
+      <div class="logo">
+        <h1>Loja Street Culture</h1>
+      </div>
 
-        <div class="logo">
-            <h1>Loja Street Culture</h1>
-        </div>
-
-        <div>
-            <img src="./img/Logo_Vibrante.png" alt="Logo Direita" class="logo-right-cont">
-        </div>
+      <div>
+        <img
+          src="./img/Logo_Vibrante.png"
+          alt="Logo Direita"
+          class="logo-right-cont"
+        />
+      </div>
     </nav>
 
-    <section style="padding:50px; text-align:center;">
+    <section style="padding: 50px; text-align: center">
+      <h2>Entre em Contato</h2>
+      <p>Preencha o formulário abaixo ou fale conosco pelo WhatsApp.</p>
 
-        <h2>Entre em Contato</h2>
-        <p>Preencha o formulário abaixo ou fale conosco pelo WhatsApp.</p>
+      <form action="enviar.php" method="post">
+        <input type="text" name="nome" placeholder="Seu nome" required />
+        <br /><br />
 
-        <form action="enviar.php" method="post">
+        <input type="email" name="email" placeholder="Seu email" required />
+        <br /><br />
 
-            <input type="text" name="nome" placeholder="Seu nome" required>
-            <br><br>
+        <textarea
+          name="mensagem"
+          placeholder="Digite sua mensagem"
+          rows="5"
+          required
+        ></textarea>
 
-            <input type="email" name="email" placeholder="Seu email" required>
-            <br><br>
+        <br /><br />
 
-            <textarea name="mensagem" placeholder="Digite sua mensagem" rows="5" required></textarea>
+        <button type="submit" class="btn">Enviar</button>
+      </form>
 
-            <br><br>
+      <br /><br />
 
-            <button type="submit" class="btn">Enviar</button>
+      <a target="_blank" href="https://w.app/streetculture" class="contact-btn"
+        >Fale Conosco</a
+      >
 
-        </form>
-
-        <br><br>
-
-        <a target="_blank" href="https://w.app/streetculture" class="contact-btn">Fale Conosco</a>
-
-        <br><br>
-
+      <br /><br />
     </section>
 
     <footer>
-        <div class="logo-rodape">
-            <h1 class="agencia">Loja Street Culture</h1>
-            <p style="color: white;">Site desenvolvido pelo FG-Desenvolvimento em TI.</p>
-            <p style="color: white;">Fábio Garcia</p>
-            <p style="color: white;">Contato: 44 9 9722-0216</p>
-            <p style="color: white;">Umuarama - PR.</p>
-        </div>
-        <b style="color: white;">© Todos os direitos reservados.</b>
+      <div class="logo-rodape">
+        <h1 class="agencia">Loja Street Culture</h1>
+        <p style="color: white">
+          Site desenvolvido pelo FG-Desenvolvimento em TI.
+        </p>
+        <p style="color: white">Fábio Garcia</p>
+        <p style="color: white">Contato: 44 9 9722-0216</p>
+        <p style="color: white">Umuarama - PR.</p>
+      </div>
+      <b style="color: white">© Todos os direitos reservados.</b>
     </footer>
     <a target="_blank" href="https://w.app/streetculture">
-        <img class="whats" src="./img/whtasapp.png"></a>
-</body>
-
+      <img class="whats" src="./img/whtasapp.png"
+    /></a>
+  </body>
 </html>
