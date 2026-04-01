@@ -62,7 +62,7 @@ const products = [
   },
   {
     id: 9,
-    title: "hone 17 pro max 256gb",
+    title: "IPhone 17 pro max 256gb",
     price: 13949.1,
     discount: 10,
     image:
