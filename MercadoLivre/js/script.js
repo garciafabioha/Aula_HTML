@@ -60,4 +60,42 @@ const products = [
     image:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_lgz1Fks4IXd0XhZMknOzGcY6bgvPs7yMew&s",
   },
+    {
+    id: 9,
+    title: "hone 17 pro max 256gb",
+    price: 13949.10,
+    discount: 10,
+    image:
+      "https://images7.kabum.com.br/produtos/fotos/925357/iphone-17-pro-max-apple-256gb-48mp-tela-6-9-super-retina-xdr-azul-intenso_1757698084_gg.jpg",
+  }
 ];
+
+const productsGrid = document.getElementById("productsGrid");
+const searchInput = document.getElementById("searchInput");
+const searchBtn = document.getElementById("searchBtn");
+
+function formatPrice(price) {
+  return price.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
+}
+
+function createProductCard(product) {
+  const discountedPrice = product.price * (1 - product.discount / 100);
+  return `
+    <div class="product-card">
+      <img src="${product.image}" alt="${product.title}" class="product-image">
+      <h3 class="product-title">${product.title}</h3>
+      <div class="product-price">Preço Original: ${formatPrice(product.price)}</div>
+      <div class="product-discount">Desconto: ${product.discount}%</div>
+      <div class="product-discount">Preço com Desconto: ${formatPrice(discountedPrice)}</div>
+    </div>
+  `;
+}
+
+function renderProduct(products) {
+  const grid = document.getElementById("productsGrid");
+  grid.innerHTML = products.map(createProductCard).join("");
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  renderProduct(products);
+});
