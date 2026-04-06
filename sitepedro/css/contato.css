@@ -109,7 +109,7 @@ section {
   margin-right: 5%;
   padding: 5%;
   text-align: center;
-   overflow: hidden;
+  overflow: hidden;
 }
 
 h2 {
@@ -163,7 +163,7 @@ footer {
   }
 
   .logoimg {
-    max-width: 80px;
+    max-width: 130px;
   }
 
   .header {
