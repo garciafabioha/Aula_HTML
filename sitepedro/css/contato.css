@@ -1,175 +1,196 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Lobster&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:wght@100..900&family=Yesteryear&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Lobster&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:wght@100..900&family=Yesteryear&display=swap");
 
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
-
 
 body {
-    margin: 0;
-    padding: 0;
-    font-family: "Roboto", sans-serif;
-    /* background: rgb(235, 238, 245); */
-    background: rgb(220, 224, 232);
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto", sans-serif;
+  /* background: rgb(235, 238, 245); */
+  background: rgb(220, 224, 232);
 }
 
-
 .navbar {
-    display: flex;
-    flex-flow: row wrap;
-    height: 100px;
-    background: white;
-    justify-content: center;
-    align-items: center;
-    position: fixed;
-    width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  height: 100px;
+  background: white;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  width: 100%;
 }
 
 .logo {
-    margin-left: 10%;
-    flex: 20%;
-    /* border: 1px solid red; */
-    text-align: left;
+  margin-left: 10%;
+  flex: 20%;
+  /* border: 1px solid red; */
+  text-align: left;
 }
 
 .logo h1 {
-    font-family: "Lobster", sans-serif;
-    color: #180f4a;
-    display: flex;
-    align-items: center;
-    font-size: 44px;
+  font-family: "Lobster", sans-serif;
+  color: #180f4a;
+  display: flex;
+  align-items: center;
+  font-size: 44px;
 }
 
 .logo-right-cont {
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
+  display: flex;
+  justify-content: space-between; /* separa título e logo */
+  align-items: center;
+  width: 100%;
+  padding-right: 20px; /* espaço da borda direita */
+}
+
+.logo-right-cont img {
+  margin-left: auto;
+  margin-right: 20px; /* afasta da borda */
+}
+
+.logoimg {
+  max-width: 240px; /* aumenta no desktop */
+  height: auto;
+  display: block;
 }
 
 .btn {
-    background: #ff2978;
-    color: white;
-    border-radius: 5px;
-    display: inline-block;
-    border: none;
-    font-size: 18px;
+  background: #ff2978;
+  color: white;
+  border-radius: 5px;
+  display: inline-block;
+  border: none;
+  font-size: 18px;
 }
 
 .contact-btn {
-    display: inline-block;
-    background: #ff2978;
-    padding: 20px;
-    color: white;
-    text-transform: uppercase;
-    border-radius: 5px;
-    text-decoration: none;
+  display: inline-block;
+  background: #ff2978;
+  padding: 20px;
+  color: white;
+  text-transform: uppercase;
+  border-radius: 5px;
+  text-decoration: none;
 }
 
 .contact-btn:hover {
-    background: #180f4a;
+  background: #180f4a;
 }
 
 .voltar {
-    position: absolute;
-    /* posiciona livremente na tela */
-    top: 10px;
-    /* distância do topo */
-    left: 50%;
-    /* centraliza horizontalmente */
-    transform: translateX(-50%);
-    /* corrige a centralização */
-    text-align: center;
-    color: #180f4a;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 16px;
-    z-index: 1000;
-    /* garante que fique acima de outros elementos */
+  position: absolute;
+  /* posiciona livremente na tela */
+  top: 10px;
+  /* distância do topo */
+  left: 50%;
+  /* centraliza horizontalmente */
+  transform: translateX(-50%);
+  /* corrige a centralização */
+  text-align: center;
+  color: #180f4a;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 16px;
+  z-index: 1000;
+  /* garante que fique acima de outros elementos */
 }
 
 .voltar:hover {
-    color: #ff2978;
+  color: #ff2978;
 }
 
 section {
-    display: inline-block;
-    margin-top: 80px;
-    margin-left: 5%;
-    margin-right: 5%;
-    padding: 5%;
-    text-align: center;
+  display: inline-block;
+  margin-top: 80px;
+  margin-left: 5%;
+  margin-right: 5%;
+  padding: 5%;
+  text-align: center;
+   overflow: hidden;
 }
 
 h2 {
-    width: 100%;
-    font-size: 35px;
-    margin: 0;
-    font-family: "Lobster", cursive;
-    font-weight: bold;
-    color: #180f4a;
+  width: 100%;
+  font-size: 35px;
+  margin: 0;
+  font-family: "Lobster", cursive;
+  font-weight: bold;
+  color: #180f4a;
 }
 
 footer {
-    margin-top: 100px;
-    height: 400px;
-    background-image: linear-gradient(180deg, #180f4a, #090422, black);
-    text-align: center;
-    border-top: 5px solid #ff2978;
+  margin-top: 100px;
+  height: 400px;
+  background-image: linear-gradient(180deg, #180f4a, #090422, black);
+  text-align: center;
+  border-top: 5px solid #ff2978;
 }
 
 .agencia {
-    font-family: "Lobster", sans-serif;
-    color: white;
-    font-size: 34px;
+  font-family: "Lobster", sans-serif;
+  color: white;
+  font-size: 34px;
 }
 
 .whats {
-    position: fixed;
-    bottom: 5px;
-    right: 5px;
-    width: 50px;
+  position: fixed;
+  bottom: 5px;
+  right: 5px;
+  width: 50px;
 }
 
 /*Deixar a página responsiva*/
 @media screen and (max-width: 1005px) {
-    .navbar {
-        position: relative;
-    }
+  .navbar {
+    position: relative;
+  }
 
-    .menu {
-        display: none;
-    }
+  .menu {
+    display: none;
+  }
 
-    .logo {
-        margin: 0;
-        text-align: center;
-    }
+  .logo {
+    margin: 0;
+    text-align: center;
+  }
 
-    .header {
-        padding-top: 50px;
-    }
+  .logo-right-cont {
+    flex-direction: column; /* quebra linha */
+    align-items: center;
+  }
 
-    .headline {
-        flex: 100%;
-        margin: 5%;
-        text-align: center;
-    }
+  .logoimg {
+    max-width: 80px;
+  }
 
-    .headline p {
-        text-align: center;
-    }
+  .header {
+    padding-top: 50px;
+  }
 
-    .img-headline {
-        flex: 100%;
-        margin: 5%;
-        text-align: center;
-    }
+  .headline {
+    flex: 100%;
+    margin: 5%;
+    text-align: center;
+  }
 
-    .whats {
-        display: none;
-    }
+  .headline p {
+    text-align: center;
+  }
 
-    .card {
-        width: 100%;
-    }
+  .img-headline {
+    flex: 100%;
+    margin: 5%;
+    text-align: center;
+  }
+
+  .whats {
+    display: none;
+  }
+
+  .card {
+    width: 100%;
+  }
 }
