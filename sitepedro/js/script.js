@@ -30,3 +30,12 @@ function trocarImagem() {
 
 // troca automática a cada 3 segundos
 setInterval(trocarImagem, 3000);
+
+
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+  // ✅ If async, return true AND call sendResponse eventually
+  someAsyncOperation().then(result => {
+    sendResponse({ data: result });
+  });
+  return true; // keeps channel open
+});
