@@ -47,5 +47,4 @@ for arquivo in pasta.glob("*.txt"):
     with open("log.txt", "a", encoding="utf-8") as log:
         log.write(f"[{agora}] {arquivo.name} -> {novo_nome}\n")
 
-
     print(novo_caminho)
