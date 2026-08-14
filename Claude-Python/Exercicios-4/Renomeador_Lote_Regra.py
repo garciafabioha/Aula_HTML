@@ -32,6 +32,9 @@ for arquivo in pasta.glob("*.txt"):
     # Cria o novo nome ANTES de utilizá-lo
     novo_nome = f"{data_formatada}_{arquivo.name}"
 
+    # Momento da execução (usado só no log)
+    agora = datetime.now().strftime("%d-%m-%Y %H:%M:%S")
+
     # Cria também o caminho completo do novo arquivo
     novo_caminho = pasta / novo_nome
 
@@ -42,7 +45,7 @@ for arquivo in pasta.glob("*.txt"):
         arquivo.rename(novo_caminho)
 
     with open("log.txt", "a", encoding="utf-8") as log:
-        log.write(f"{arquivo.name} -> {novo_nome}\n")
+        log.write(f"[{agora}] {arquivo.name} -> {novo_nome}\n")
 
 
     print(novo_caminho)
