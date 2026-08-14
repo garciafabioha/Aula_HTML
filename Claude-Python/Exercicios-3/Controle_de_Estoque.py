@@ -37,5 +37,3 @@ estoque.adicionar_produto(produto2)
 # Mostrando os produtos do estoque
 for produto in estoque.produtos:
     print(produto)
-
-print("Teste Git")
