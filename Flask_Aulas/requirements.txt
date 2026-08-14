@@ -1,0 +1,4 @@
+# Instalaçòes Flask e biblioteca
+# python -m pip install flask numpy pandas
+# python -m pip install numpy pandas
+# python -m pip install streamlit 

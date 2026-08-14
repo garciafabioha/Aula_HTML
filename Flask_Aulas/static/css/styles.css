@@ -1,0 +1,63 @@
+:root {
+  --color-bg: #121212;
+  --color-bg-form: #1e1a24;
+  --color-purple: #8b5cf6;
+  --color-purple-dark: #6d28d9;
+  --color-purple-light: #a78bfa;
+  --color-text: #fff;
+  --color-text-muted: #c4b5fd;
+  --radius: 8px;
+  --transition-speed: 0.3s;
+}
+
+body {
+  background-color: var(--color-bg);
+}
+h1 {
+  color: var(--color-purple-light);
+  font-size: 32px;
+  text-align: center;
+}
+label {
+  color: var(--color-text);
+}
+input,
+textarea {
+  width: 93%;
+  padding: 8px;
+  border-radius: var(--radius);
+  margin-bottom: 10px;
+  border: 1px solid var(--color-purple-dark);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+}
+input:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--color-purple);
+}
+form {
+  padding: 20px;
+  width: 250px;
+  margin: 0 auto;
+  height: 350px;
+  background-color: var(--color-bg-form);
+  border-radius: var(--radius);
+  box-shadow: 0 0 20px rgba(139, 92, 246, 0.15);
+}
+button {
+  padding: 8px;
+  width: 100%;
+  cursor: pointer;
+  border-radius: var(--radius);
+  margin-bottom: 8px;
+  background-color: var(--color-purple-dark);
+  color: var(--color-text);
+  border: none;
+  font-weight: bold;
+}
+button:hover {
+  opacity: 0.7;
+  transition: var(--transition-speed) all;
+  background-color: var(--color-purple);
+}

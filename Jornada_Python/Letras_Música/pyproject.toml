@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "letras-musica"
+version = "0.1.0"
+description = ""
+authors = []
+package-mode = false 
+
+[tool.poetry.dependencies]
+python = ">=3.13"
+requests = "^2.33.1"
+streamlit = "^1.57.0"
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[dependency-groups]
+dev = [
+    "ipykernel (>=7.2.0,<8.0.0)"
+]

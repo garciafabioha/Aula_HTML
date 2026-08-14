@@ -1,0 +1,72 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --purple: #820ad1;
+  --purple-dark: #6807b0;
+  --white: #ffffff;
+  --dark: #0b0014;
+  --gray-text: #6b6b6b;
+}
+
+body {
+  font-family: "Roboto", Arial, sans-serif;
+  color: var(--dark);
+}
+
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 64px;
+  backdrop-filter: blur(10px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 40px;
+  z-index: 99;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.logo-img {
+  height: 26px;
+}
+
+header nav {
+  display: flex;
+  gap: 25px;
+}
+
+header nav a {
+  color: var(--dark);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+header nav a:hover {
+  color: var(--purple);
+}
+
+.btn-nubank {
+    background-color: var(--purple-dark);   
+    color: var(--white);
+    padding: 10px 20px;
+    border-radius: 30px;
+    font-weight: 700;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.hero {
+    min-height: 100vh;
+    background: url('../img/Banner_Fundo.png') center / cover no-repeat;
+    padding: 30px 40px 80px;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+}
