@@ -1,0 +1,7 @@
+2026-08-14 10:32:11 ERROR Falha ao conectar no banco: timeout
+2026-08-14 10:33:02 INFO Conexão restabelecida
+2026-08-14 10:40:15 ERROR Usuário não encontrado
+2026-08-14 11:05:32 WARNING Memória acima de 80%
+2026-08-14 11:10:20 ERROR Falha ao acessar servidor
+2026-08-14 11:15:10 INFO Processo finalizado
+2026-08-14 12:02:44 ERROR Erro ao gravar registro
