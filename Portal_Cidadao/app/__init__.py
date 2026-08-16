@@ -1,12 +1,14 @@
 from flask import Flask
+from flask_mail import Mail
 from flask_sqlalchemy import SQLAlchemy
 
 from config import Config
 
-# O objeto "db" fica aqui fora da função para poder ser
-# importado por outros arquivos (ex: models.py) sem criar
+# Os objetos "db" e "mail" ficam aqui fora da função para poder ser
+# importados por outros arquivos (ex: models.py, emails.py) sem criar
 # dependência circular.
 db = SQLAlchemy()
+mail = Mail()
 
 
 def create_app():
@@ -22,6 +24,7 @@ def create_app():
     app.config.from_object(Config)
 
     db.init_app(app)
+    mail.init_app(app)
 
     # Importa os models para que o SQLAlchemy "conheça" as tabelas
     # antes de rodarmos db.create_all() (em init_db.py).

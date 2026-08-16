@@ -10,11 +10,23 @@
     <header>
         <h1>Portal do Cidadão</h1>
         <nav>
-            <a href="/">Início</a>
+            <a href="{{ url_for('main.index') }}">Início</a>
+            <a href="{{ url_for('main.novo_protocolo') }}">Abrir solicitação</a>
+            <a href="{{ url_for('main.consultar_protocolo') }}">Consultar protocolo</a>
         </nav>
     </header>
 
     <main>
+        {% with mensagens = get_flashed_messages(with_categories=true) %}
+            {% if mensagens %}
+                <ul class="mensagens">
+                    {% for categoria, mensagem in mensagens %}
+                        <li class="mensagem-{{ categoria }}">{{ mensagem }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+
         {% block content %}{% endblock %}
     </main>
 

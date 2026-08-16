@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}Consultar protocolo - Portal do Cidadão{% endblock %}
+
+{% block content %}
+    <h2>Consultar status da solicitação</h2>
+
+    <form method="GET">
+        <label for="numero">Número do protocolo</label><br>
+        <input
+            type="text"
+            id="numero"
+            name="numero"
+            value="{{ numero }}"
+            placeholder="PROT-2026-000001"
+            size="30"
+        >
+        <button type="submit">Consultar</button>
+    </form>
+
+    {% if buscou %}
+        {% if protocolo %}
+            <h3>Protocolo encontrado</h3>
+            {% include "_protocolo_detalhes.html" %}
+        {% else %}
+            <p class="erro">
+                Nenhuma solicitação encontrada com o número "{{ numero }}".
+                Verifique se digitou corretamente e tente novamente.
+            </p>
+        {% endif %}
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block title %}Protocolo {{ protocolo.numero }} - Portal do Cidadão{% endblock %}
+
+{% block content %}
+    <h2>Solicitação registrada</h2>
+
+    <p>Número do protocolo: <strong>{{ protocolo.numero }}</strong></p>
+    <p>Guarde esse número para consultar o andamento da sua solicitação depois.</p>
+
+    <h3>Detalhes</h3>
+    {% include "_protocolo_detalhes.html" %}
+{% endblock %}

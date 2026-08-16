@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block title %}Abrir solicitação - Portal do Cidadão{% endblock %}
+
+{% block content %}
+    <h2>Abrir nova solicitação</h2>
+
+    <form method="POST" novalidate>
+        {{ form.hidden_tag() }}
+
+        {% if form.csrf_token.errors %}
+            <p class="erro">
+                Sua sessão expirou ou o formulário foi reenviado de forma inválida.
+                Por favor, preencha novamente.
+            </p>
+        {% endif %}
+
+        <p>
+            {{ form.nome_cidadao.label }}<br>
+            {{ form.nome_cidadao(size=40) }}
+            {% for erro in form.nome_cidadao.errors %}
+                <br><span class="erro">{{ erro }}</span>
+            {% endfor %}
+        </p>
+
+        <p>
+            {{ form.email.label }}<br>
+            {{ form.email(size=40) }}
+            {% for erro in form.email.errors %}
+                <br><span class="erro">{{ erro }}</span>
+            {% endfor %}
+        </p>
+
+        <p>
+            {{ form.tipo.label }}<br>
+            {{ form.tipo() }}
+            {% for erro in form.tipo.errors %}
+                <br><span class="erro">{{ erro }}</span>
+            {% endfor %}
+        </p>
+
+        <p>
+            {{ form.descricao.label }}<br>
+            {{ form.descricao(rows=5, cols=50) }}
+            {% for erro in form.descricao.errors %}
+                <br><span class="erro">{{ erro }}</span>
+            {% endfor %}
+        </p>
+
+        <p>{{ form.submit() }}</p>
+    </form>
+{% endblock %}

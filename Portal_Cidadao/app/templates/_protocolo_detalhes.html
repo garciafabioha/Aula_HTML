@@ -1,0 +1,8 @@
+<p>Nome: {{ protocolo.nome_cidadao }}</p>
+<p>Tipo: {{ protocolo.tipo }}</p>
+<p>Descrição: {{ protocolo.descricao }}</p>
+<p>Status atual: <strong>{{ protocolo.status }}</strong></p>
+<p>Aberto em: {{ protocolo.data_abertura.strftime("%d/%m/%Y %H:%M") }}</p>
+{% if protocolo.data_atualizacao and protocolo.data_atualizacao != protocolo.data_abertura %}
+    <p>Última atualização: {{ protocolo.data_atualizacao.strftime("%d/%m/%Y %H:%M") }}</p>
+{% endif %}
