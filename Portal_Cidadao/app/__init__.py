@@ -15,9 +15,13 @@ mail = Mail()
 # (Parte 5): sabe quem é o usuário logado em cada requisição e para
 # onde mandar quem tentar acessar uma página protegida sem estar logado.
 login_manager = LoginManager()
-login_manager.login_view = "admin.login"
-login_manager.login_message = "Faça login para acessar o painel administrativo."
-login_manager.login_message_category = "aviso"
+# Os stubs de tipo do Flask-Login não anotam esses atributos como
+# "str | None" (só inferem "None" a partir do valor padrão), então o
+# Pyright/Pylance acusa um erro de tipo aqui mesmo estando tudo certo
+# em tempo de execução — daí o "type: ignore".
+login_manager.login_view = "admin.login"  # type: ignore[assignment]
+login_manager.login_message = "Faça login para acessar o painel administrativo."  # type: ignore[assignment]
+login_manager.login_message_category = "aviso"  # type: ignore[assignment]
 
 
 def create_app(config_class=Config):

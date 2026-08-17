@@ -29,12 +29,16 @@ def novo_protocolo():
     if form.validate_on_submit():
         numero = gerar_numero_protocolo()
 
+        # Os campos abaixo usam "form.x.data or ''" antes do .strip() só
+        # para agradar o verificador de tipos (o WTForms tipa .data como
+        # "str | None", embora o DataRequired() já garanta que não vem
+        # None na prática quando validate_on_submit() é True).
         protocolo = Protocolo(
             numero=numero,
-            nome_cidadao=form.nome_cidadao.data.strip(),
-            email=form.email.data.strip() if form.email.data else None,
+            nome_cidadao=(form.nome_cidadao.data or "").strip(),
+            email=(form.email.data or "").strip() or None,
             tipo=form.tipo.data,
-            descricao=form.descricao.data.strip(),
+            descricao=(form.descricao.data or "").strip(),
         )
 
         db.session.add(protocolo)

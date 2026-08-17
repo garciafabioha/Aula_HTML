@@ -64,7 +64,10 @@ def login():
     form = LoginForm()
 
     if form.validate_on_submit():
-        usuario = AdminUser.query.filter_by(username=form.username.data.strip()).first()
+        # "or ''" antes do .strip() só para o verificador de tipos (o
+        # WTForms tipa .data como "str | None"; o DataRequired() já
+        # garante que não é None aqui, já que validate_on_submit() é True).
+        usuario = AdminUser.query.filter_by(username=(form.username.data or "").strip()).first()
 
         if usuario and usuario.check_password(form.password.data):
             login_user(usuario)
