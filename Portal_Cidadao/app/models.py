@@ -1,6 +1,8 @@
 from datetime import datetime
+from typing import Optional
 
 from flask_login import UserMixin
+from sqlalchemy.orm import Mapped, mapped_column
 from werkzeug.security import check_password_hash, generate_password_hash
 
 from app import db
@@ -18,28 +20,36 @@ class Protocolo(db.Model):
 
     Cada linha nesta tabela é uma solicitação: um buraco na rua,
     um poste queimado, uma reclamação sobre algum serviço público, etc.
+
+    Usa o estilo "declarativo tipado" do SQLAlchemy 2.0 (Mapped[...] +
+    mapped_column(), em vez do antigo "coluna = db.Column(...)"). Na
+    prática funciona exatamente igual — Protocolo(numero=..., ...)
+    continua criando uma linha normalmente —, mas com essas anotações
+    de tipo o SQLAlchemy consegue gerar um __init__ que o Pylance/
+    Pyright entende, então ele para de reclamar de "parâmetro
+    desconhecido" ao criar um Protocolo(...).
     """
 
     __tablename__ = "protocolos"
 
-    id = db.Column(db.Integer, primary_key=True)
+    id: Mapped[int] = mapped_column(primary_key=True)
 
     # Número público do protocolo, o que o cidadão usa para consultar
     # o status depois (ex: "PROT-2026-000123"). É diferente do "id"
     # interno do banco para não expor quantas linhas a tabela tem.
-    numero = db.Column(db.String(20), unique=True, nullable=False, index=True)
+    numero: Mapped[str] = mapped_column(db.String(20), unique=True, nullable=False, index=True)
 
-    nome_cidadao = db.Column(db.String(120), nullable=False)
-    email = db.Column(db.String(120), nullable=True)
+    nome_cidadao: Mapped[str] = mapped_column(db.String(120), nullable=False)
+    email: Mapped[Optional[str]] = mapped_column(db.String(120), nullable=True)
 
-    tipo = db.Column(db.String(80), nullable=False)
-    descricao = db.Column(db.Text, nullable=False)
+    tipo: Mapped[str] = mapped_column(db.String(80), nullable=False)
+    descricao: Mapped[str] = mapped_column(db.Text, nullable=False)
 
     # Aberto -> Em andamento -> Concluído (ou Indeferido)
-    status = db.Column(db.String(30), nullable=False, default="Aberto")
+    status: Mapped[str] = mapped_column(db.String(30), nullable=False, default="Aberto")
 
-    data_abertura = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
-    data_atualizacao = db.Column(
+    data_abertura: Mapped[datetime] = mapped_column(db.DateTime, nullable=False, default=datetime.utcnow)
+    data_atualizacao: Mapped[datetime] = mapped_column(
         db.DateTime, nullable=False, default=datetime.utcnow, onupdate=datetime.utcnow
     )
 
@@ -61,9 +71,9 @@ class AdminUser(UserMixin, db.Model):
 
     __tablename__ = "admin_users"
 
-    id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(80), unique=True, nullable=False, index=True)
-    password_hash = db.Column(db.String(255), nullable=False)
+    id: Mapped[int] = mapped_column(primary_key=True)
+    username: Mapped[str] = mapped_column(db.String(80), unique=True, nullable=False, index=True)
+    password_hash: Mapped[str] = mapped_column(db.String(255), nullable=False)
 
     def set_password(self, senha):
         self.password_hash = generate_password_hash(senha)
