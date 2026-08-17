@@ -1,6 +1,16 @@
 from datetime import datetime
 
+from flask_login import UserMixin
+from werkzeug.security import check_password_hash, generate_password_hash
+
 from app import db
+
+# Status possíveis de um protocolo, na ordem esperada do fluxo normal
+# (Aberto -> Em andamento -> Concluído), mais "Indeferido" para quando a
+# solicitação é negada. Centralizado aqui porque tanto o formulário do
+# painel admin (app/admin_forms.py) quanto o valor padrão do model usam
+# essa mesma lista.
+STATUS_CHOICES = ["Aberto", "Em andamento", "Concluído", "Indeferido"]
 
 
 class Protocolo(db.Model):
@@ -35,3 +45,31 @@ class Protocolo(db.Model):
 
     def __repr__(self):
         return f"<Protocolo {self.numero} - {self.status}>"
+
+
+class AdminUser(UserMixin, db.Model):
+    """Usuário com acesso ao painel administrativo (Parte 5).
+
+    Herda de UserMixin (Flask-Login) para ganhar de graça os métodos
+    que a extensão precisa (is_authenticated, is_active, get_id, etc.).
+    Não guardamos a senha em texto puro — só o hash, gerado com
+    werkzeug.security (a mesma lib que o próprio Flask usa por baixo).
+
+    Não existe cadastro pelo site: o primeiro (e demais) admins são
+    criados rodando o script create_admin.py pelo terminal.
+    """
+
+    __tablename__ = "admin_users"
+
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(80), unique=True, nullable=False, index=True)
+    password_hash = db.Column(db.String(255), nullable=False)
+
+    def set_password(self, senha):
+        self.password_hash = generate_password_hash(senha)
+
+    def check_password(self, senha):
+        return check_password_hash(self.password_hash, senha)
+
+    def __repr__(self):
+        return f"<AdminUser {self.username}>"

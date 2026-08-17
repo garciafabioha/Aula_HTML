@@ -3,11 +3,13 @@
 {% block title %}Protocolo {{ protocolo.numero }} - Portal do Cidadão{% endblock %}
 
 {% block content %}
-    <h2>Solicitação registrada</h2>
+    <h2 class="mb-3">Solicitação registrada</h2>
 
-    <p>Número do protocolo: <strong>{{ protocolo.numero }}</strong></p>
-    <p>Guarde esse número para consultar o andamento da sua solicitação depois.</p>
+    <div class="alert alert-success">
+        Número do protocolo: <strong>{{ protocolo.numero }}</strong><br>
+        Guarde esse número para consultar o andamento da sua solicitação depois.
+    </div>
 
-    <h3>Detalhes</h3>
+    <h3 class="h5 mb-3">Detalhes</h3>
     {% include "_protocolo_detalhes.html" %}
 {% endblock %}

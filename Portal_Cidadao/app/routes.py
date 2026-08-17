@@ -6,10 +6,10 @@ from app.forms import ProtocoloForm
 from app.models import Protocolo
 from app.utils import gerar_numero_protocolo
 
-# Um Blueprint é um jeito de organizar rotas em grupos.
-# Por enquanto temos só um grupo (main_bp), mas na Parte 5
-# (painel administrativo) provavelmente criaremos outro
-# blueprint separado, ex: admin_bp.
+# Um Blueprint é um jeito de organizar rotas em grupos. Este (main_bp)
+# tem só as rotas públicas, usadas pelo cidadão. Desde a Parte 5 existe
+# também o admin_bp (app/admin_routes.py), com as rotas do painel
+# administrativo, registrado à parte em app/__init__.py.
 main_bp = Blueprint("main", __name__)
 
 

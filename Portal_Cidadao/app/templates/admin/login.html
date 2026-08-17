@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block title %}Login administrativo - Portal do Cidadão{% endblock %}
+
+{% block content %}
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-4">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h2 class="h4 mb-3 text-center">Área administrativa</h2>
+                    <p class="text-muted small text-center">Acesso restrito à equipe de atendimento.</p>
+
+                    <form method="POST" class="needs-validation" novalidate>
+                        {{ form.hidden_tag() }}
+
+                        {% if form.csrf_token is defined and form.csrf_token.errors %}
+                            <div class="alert alert-danger">
+                                Sua sessão expirou ou o formulário foi reenviado de forma inválida.
+                                Por favor, preencha novamente.
+                            </div>
+                        {% endif %}
+
+                        <div class="mb-3">
+                            {{ form.username.label(class="form-label") }}
+                            {{ form.username(
+                                class=("form-control is-invalid" if form.username.errors else "form-control"),
+                                autofocus=true,
+                                required=true
+                            ) }}
+                            {% for erro in form.username.errors %}
+                                <div class="invalid-feedback">{{ erro }}</div>
+                            {% endfor %}
+                        </div>
+
+                        <div class="mb-3">
+                            {{ form.password.label(class="form-label") }}
+                            {{ form.password(
+                                class=("form-control is-invalid" if form.password.errors else "form-control"),
+                                required=true
+                            ) }}
+                            {% for erro in form.password.errors %}
+                                <div class="invalid-feedback">{{ erro }}</div>
+                            {% endfor %}
+                        </div>
+
+                        <div class="d-grid">
+                            {{ form.submit(class="btn btn-primary") }}
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,4 @@
+# Dependências extras só para rodar a suíte de testes (Parte 7).
+# Instale com: pip install -r requirements.txt -r requirements-dev.txt
+
+pytest==9.1.1

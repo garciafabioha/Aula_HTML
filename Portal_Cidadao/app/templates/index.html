@@ -3,10 +3,15 @@
 {% block title %}Início - Portal do Cidadão{% endblock %}
 
 {% block content %}
-    <h2>Bem-vindo(a)</h2>
-    <p>
-        Este é o Portal do Cidadão. Nas próximas etapas, aqui vai ser
-        possível abrir uma solicitação/protocolo e consultar o status
-        de solicitações já abertas.
-    </p>
+    <div class="p-4 p-md-5 mb-4 bg-body-tertiary rounded-3">
+        <h1 class="display-6 fw-bold">Bem-vindo(a)</h1>
+        <p class="col-lg-8 fs-5">
+            Este é o Portal do Cidadão. Aqui você pode abrir uma solicitação/protocolo
+            e consultar o status de solicitações já abertas.
+        </p>
+        <a class="btn btn-primary btn-lg me-2" href="{{ url_for('main.novo_protocolo') }}">Abrir solicitação</a>
+        <a class="btn btn-outline-secondary btn-lg" href="{{ url_for('main.consultar_protocolo') }}">Consultar protocolo</a>
+    </div>
+
+    <p class="text-muted">Portal do Cidadão &mdash; projeto de estudo/portfólio.</p>
 {% endblock %}

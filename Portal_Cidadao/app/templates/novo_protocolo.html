@@ -3,50 +3,71 @@
 {% block title %}Abrir solicitação - Portal do Cidadão{% endblock %}
 
 {% block content %}
-    <h2>Abrir nova solicitação</h2>
+    <h2 class="mb-4">Abrir nova solicitação</h2>
 
-    <form method="POST" novalidate>
+    <form method="POST" class="needs-validation col-lg-8" novalidate>
         {{ form.hidden_tag() }}
 
-        {% if form.csrf_token.errors %}
-            <p class="erro">
+        {% if form.csrf_token is defined and form.csrf_token.errors %}
+            <div class="alert alert-danger">
                 Sua sessão expirou ou o formulário foi reenviado de forma inválida.
                 Por favor, preencha novamente.
-            </p>
+            </div>
         {% endif %}
 
-        <p>
-            {{ form.nome_cidadao.label }}<br>
-            {{ form.nome_cidadao(size=40) }}
+        <div class="mb-3">
+            {{ form.nome_cidadao.label(class="form-label") }}
+            {{ form.nome_cidadao(
+                class=("form-control is-invalid" if form.nome_cidadao.errors else "form-control"),
+                maxlength=120,
+                required=true
+            ) }}
             {% for erro in form.nome_cidadao.errors %}
-                <br><span class="erro">{{ erro }}</span>
+                <div class="invalid-feedback">{{ erro }}</div>
             {% endfor %}
-        </p>
+        </div>
 
-        <p>
-            {{ form.email.label }}<br>
-            {{ form.email(size=40) }}
+        <div class="mb-3">
+            {{ form.email.label(class="form-label") }}
+            {{ form.email(
+                class=("form-control is-invalid" if form.email.errors else "form-control"),
+                type="email",
+                maxlength=120
+            ) }}
+            <div class="form-text">Opcional. Se informado, enviamos o número do protocolo por e-mail.</div>
             {% for erro in form.email.errors %}
-                <br><span class="erro">{{ erro }}</span>
+                <div class="invalid-feedback">{{ erro }}</div>
             {% endfor %}
-        </p>
+        </div>
 
-        <p>
-            {{ form.tipo.label }}<br>
-            {{ form.tipo() }}
+        <div class="mb-3">
+            {{ form.tipo.label(class="form-label") }}
+            {{ form.tipo(
+                class=("form-select is-invalid" if form.tipo.errors else "form-select"),
+                required=true
+            ) }}
             {% for erro in form.tipo.errors %}
-                <br><span class="erro">{{ erro }}</span>
+                <div class="invalid-feedback">{{ erro }}</div>
             {% endfor %}
-        </p>
+        </div>
 
-        <p>
-            {{ form.descricao.label }}<br>
-            {{ form.descricao(rows=5, cols=50) }}
+        <div class="mb-3">
+            {{ form.descricao.label(class="form-label") }}
+            {{ form.descricao(
+                class=("form-control is-invalid" if form.descricao.errors else "form-control"),
+                rows=5,
+                minlength=10,
+                maxlength=2000,
+                required=true
+            ) }}
+            <div class="form-text">Entre 10 e 2000 caracteres.</div>
             {% for erro in form.descricao.errors %}
-                <br><span class="erro">{{ erro }}</span>
+                <div class="invalid-feedback">{{ erro }}</div>
             {% endfor %}
-        </p>
+        </div>
 
-        <p>{{ form.submit() }}</p>
+        <div>
+            {{ form.submit(class="btn btn-primary") }}
+        </div>
     </form>
 {% endblock %}
