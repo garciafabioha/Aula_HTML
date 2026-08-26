@@ -1,0 +1,14 @@
+# Arquivos Excel
+*.xlsx
+*.xls
+
+# Cache do Python
+__pycache__/
+*.pyc
+
+# Ambiente virtual
+.venv/
+venv/
+
+# Configurações locais
+.env
